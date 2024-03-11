@@ -11,22 +11,12 @@
     height: 10px;
 }
 
-#second::after{
-    content: '';
-    display: block;
-    width: 10px;
-    height: 300px;
-    background-color: green;
+#second>div, #minute>div, #hour>div{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
 }
 
-#minute > div{
-    width: 10px;
-    height: 200px;
-    background-color: blue;
-}
-
-#hour > div{
-    width: 10px;
-    height: 100px;
-    background-color: red;
+p{
+    padding: 0;
+    margin: 0;
 }
