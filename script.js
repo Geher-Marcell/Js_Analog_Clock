@@ -20,32 +20,19 @@ CreateClock();
 
 setInterval(() => {
     let date = new Date();
+    let dates = [date.getHours(), date.getMinutes(), date.getSeconds()];
+    
+    for(let i = 0; i < clockStats.length; i++) {
+        let time = dates[dates.length-1 - i];
+        let deg = (time / clockStats[i].oneRot)*360;
 
-    let seconds = date.getSeconds();
-    let minutes = date.getMinutes();
-    let hours = date.getHours();
+        document.querySelector(`#${clockStats[i].id}`).style.transform = `rotate(${deg}deg)`;
 
-    let secondsDeg = (seconds / 60) * 360;
-    let minutesDeg = (minutes / 60) * 360;
-    let hoursDeg = (hours / 12) * 360;
-
-    // clock hands
-    document.querySelector('#second').style.transform = `rotate(${secondsDeg}deg)`;
-    document.querySelector('#minute').style.transform = `rotate(${minutesDeg}deg)`;
-    document.querySelector('#hour').style.transform = `rotate(${hoursDeg}deg)`;
-
-    document.querySelectorAll('#second>div>p').forEach((el) => {
-        el.innerHTML = seconds;
-        el.style.transform = `rotate(-${180+secondsDeg}deg)`;
-    });
-    document.querySelectorAll('#minute>div>p').forEach((el) => {
-        el.innerHTML = minutes;
-        el.style.transform = `rotate(-${180+minutesDeg}deg)`;
-    });
-    document.querySelectorAll('#hour>div>p').forEach((el) => {
-        el.innerHTML = hours;
-        el.style.transform = `rotate(-${180+hoursDeg}deg)`;
-    });
+        document.querySelectorAll(`#${clockStats[i].id} .clockNum`).forEach((el, index) => {
+            el.innerHTML = time;
+            el.style.transform = `rotate(-${180+deg}deg)`;
+        });
+    }
 }, 1000);
 
 function CreateClock(){   
@@ -73,6 +60,7 @@ function CreateClock(){
         for(let j = 0; j < clockStats[i].numCount; j++){
             let p = document.createElement('p');
             p.classList.add('clockNum');
+            p.innerText = j;
 
             //Default styling
             p.style.padding = 0;
