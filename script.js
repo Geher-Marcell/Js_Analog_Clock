@@ -17,6 +17,7 @@ let clockStats = [
 ]
 
 CreateClock();
+CreateBackground();
 
 setInterval(() => {
     let date = new Date();
@@ -26,7 +27,7 @@ setInterval(() => {
         let time = dates[dates.length-1 - i];
         let deg = (time / clockStats[i].oneRot)*360;
 
-        document.querySelector(`#${clockStats[i].id}`).style.transform = `rotate(${deg}deg)`;
+        document.querySelector(`#${clockStats[i].id}`).style.transform = `translate(50%, 50%) rotate(${deg}deg)`;
 
         document.querySelectorAll(`#${clockStats[i].id} .clockNum`).forEach((el, index) => {
             el.innerHTML = time;
@@ -46,7 +47,7 @@ function CreateClock(){
         pointer.style.position = "absolute";
         pointer.style.top = "50%";
         pointer.style.left = "50%";
-        pointer.style.transform = "translate(-50%, -50%)";
+        pointer.style.rotate = "180deg";
 
         let num = document.createElement('div');
 
@@ -73,4 +74,16 @@ function CreateClock(){
 
         document.querySelector("#clock").style.position = "relative";
     }
+}
+
+function CreateBackground(){
+    let clock = document.querySelector("#clock");
+    
+    let div = document.createElement('div');
+    div.style.width = "30vw";
+    div.style.height = "30vw";
+    div.style.border = "1px solid black";
+    div.style.borderRadius = "50%";
+
+    clock.appendChild(div);
 }
