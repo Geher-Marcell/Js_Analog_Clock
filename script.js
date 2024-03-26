@@ -37,6 +37,7 @@ setInterval(() => {
 }, 1000);
 
 function CreateClock(){   
+    let clock = document.querySelector("#clock");
     for(let i = 0; i < clockStats.length; i++){
         let pointer = document.createElement('div');
         pointer.id = clockStats[i].id;
@@ -70,9 +71,11 @@ function CreateClock(){
             num.appendChild(p);
         }
 
-        document.querySelector("#clock").appendChild(pointer);
+        clock.appendChild(pointer);
 
-        document.querySelector("#clock").style.position = "relative";
+        clock.style.position = "relative";
+        clock.style.width = "1px";
+        clock.style.height = "1px";
     }
 }
 
@@ -83,6 +86,10 @@ function CreateBackground(){
     div.style.width = "30vw";
     div.style.height = "30vw";
     div.style.border = "1px solid black";
+    div.style.position = "absolute";
+    div.style.top = "50%";
+    div.style.left = "50%";
+    div.style.transform = "translate(-50%, -50%)";
     div.style.borderRadius = "50%";
 
     clock.appendChild(div);
