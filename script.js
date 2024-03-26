@@ -6,12 +6,12 @@ let clockStats = [
     },
     {
         id: 'minute',
-        numCount: 10,
+        numCount: 11,
         oneRot: 60
     },
     {
         id: 'hour',
-        numCount: 6,
+        numCount: 8,
         oneRot: 12
     }
 ]
