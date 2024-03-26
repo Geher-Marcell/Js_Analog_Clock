@@ -91,6 +91,33 @@ function CreateBackground(){
     div.style.left = "50%";
     div.style.transform = "translate(-50%, -50%)";
     div.style.borderRadius = "50%";
+    div.id = "background";
 
     clock.appendChild(div);
+
+    //Create 12 divs for the hours
+    for(let i = 0; i < 12; i++){
+        let pivot = document.createElement('div');
+        pivot.style.width = "10px";
+        pivot.style.height = "10px";
+        pivot.style.position = "absolute";
+        pivot.style.top = "50%";
+        pivot.style.left = "50%";
+        pivot.style.transform = `translate(-50%, -50%) rotate(${i*30}deg)`;
+        pivot.classList.add('pivot');
+
+        let hour = document.createElement('div');
+        hour.style.width = "2px";
+        hour.style.height = "10px";
+        hour.style.position = "absolute";
+        hour.style.top = "50%";
+        hour.style.left = "50%";
+        hour.style.transform = "translate(-50%, -50%)";
+        hour.style.backgroundColor = "black";
+        hour.style.marginTop = "14vw";
+        pivot.classList.add('hourLine');
+
+        pivot.appendChild(hour);
+        div.appendChild(pivot);
+    }
 }
