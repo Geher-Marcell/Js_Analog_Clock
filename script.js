@@ -41,7 +41,7 @@ function CreateClock(){
         let pointer = document.createElement('div');
         pointer.id = clockStats[i].id;
 
-        //Default styling
+        //Default styling for the pointer
         pointer.style.width = "10px";
         pointer.style.height = "10px";
         pointer.style.position = "absolute";
@@ -51,7 +51,7 @@ function CreateClock(){
 
         let num = document.createElement('div');
 
-        //Default styling
+        //Default styling for the inner div of the pointer
         num.style.display = "grid";
         num.style.gridTemplateRows = "1fr 1fr";
         num.style.marginTop = "20px";
@@ -63,7 +63,7 @@ function CreateClock(){
             p.classList.add('clockNum');
             p.innerText = j;
 
-            //Default styling
+            //Default styling for the numbers
             p.style.padding = 0;
             p.style.margin = 0;
 
